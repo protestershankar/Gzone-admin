@@ -813,4 +813,74 @@
   .admin-page-title {
     @apply text-4xl font-extrabold tracking-wide text-neutral-900 mb-10;
   }
+}@layer components {
+
+  .storyline-section {
+    @apply py-32;
+    background-color: var(--color-red-bg);
+  }
+
+  .storyline-container {
+    @apply max-w-[1440px] mx-auto px-6 lg:px-16 grid lg:grid-cols-2 gap-32 items-start;
+  }
+
+  .storyline-heading {
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-accent-red);
+    margin-bottom: 2.5rem;
+  }
+
+  .storyline-paragraph {
+    @apply text-sm leading-7;
+    color: var(--color-text-primary);
+    max-width: 540px;
+  }
+
+  /* Right Metadata Card */
+  .storyline-meta-card {
+    @apply rounded-3xl px-16 py-16;
+    border: 1px solid var(--color-accent-red-light);
+    background: rgba(255,255,255,0.35);
+  }
+
+  .storyline-meta-group {
+    margin-bottom: 3rem;
+  }
+
+  .storyline-meta-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .storyline-meta-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .storyline-platforms {
+    @apply flex gap-4 text-xl mt-3;
+    color: var(--color-accent-red);
+  }
+
+  .storyline-tags {
+    @apply flex gap-4 mt-8 flex-wrap;
+  }
+
+  .tag-red {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid var(--color-accent-red);
+    color: var(--color-accent-red);
+    border-radius: 4px;
+  }
+
 }
