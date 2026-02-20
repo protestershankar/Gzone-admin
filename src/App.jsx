@@ -81,6 +81,7 @@ import ReviewsCommunity from "./admin/pages/ReviewsCommunity";
 import MoreGames from "./admin/pages/MoreGames";
 import SocialCommunity from "./admin/pages/SocialCommunity";
 
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -94,6 +95,7 @@ const App = () => {
         <Route path="/about" element={<AboutHub />} />
         <Route path="/about/details" element={<About />} />
         <Route path="/games" element={<GamePostCollection />} />
+        <Route path="/game-collection" element={<GamePostCollection />} />
 
         {/* Admin Routes (Correct Way) */}
         <Route path="/admin" element={<AdminLayout />}>

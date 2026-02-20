@@ -1,7 +1,7 @@
 import Navbar from "../../components/Navbar";
 import gameposthero from "../../assets/images/gameposthero.png";
 import placeholderWhite from "../../assets/images/placeholderWhite.svg";
-
+import { useNavigate } from "react-router-dom";
 /* =========================================================
    MOCK DATABASE OBJECT (STRUCTURE MATCHES YOUR SCHEMA)
 ========================================================= */
@@ -123,19 +123,50 @@ export default function GamePostPage() {
 ========================================================= */
 
 function HeroSection({ hero }) {
+  const navigate = useNavigate();
+
   return (
-    <section className="relative h-[540px] bg-black text-white">
+    <section className="relative h-[540px] bg-black text-white overflow-hidden">
+
+      {/* Background Image */}
       <img
         src={hero.background_img || placeholderWhite}
+        alt="hero"
         className="absolute inset-0 w-full h-full object-cover"
       />
+
       <div className="absolute inset-0 bg-black/60" />
 
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-        <h1 className="text-7xl font-black uppercase">{hero.game_title}</h1>
-        <p className="max-w-md mt-4 text-white/80">
+      {/* Content */}
+      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 font-jetmono">
+
+        <h1 className="text-7xl font-black uppercase tracking-wide">
+          {hero.game_title}
+        </h1>
+
+        <p className="max-w-md mt-4 text-white/80 text-sm">
           {hero.game_desc_short}
         </p>
+
+        {/* Buttons */}
+        <div className="flex gap-6 mt-8">
+
+          {/* Watch Trailer */}
+          <button
+            className="px-8 py-3 border border-white rounded-md text-xs uppercase tracking-widest hover:bg-white hover:text-black transition"
+          >
+            Watch Trailer
+          </button>
+
+          {/* Get Game */}
+          <button
+            onClick={() => navigate("/game-collection")}
+            className="px-8 py-3 bg-red-600 rounded-md text-xs uppercase tracking-widest hover:bg-red-700 transition"
+          >
+            Get The Game →
+          </button>
+
+        </div>
       </div>
     </section>
   );
