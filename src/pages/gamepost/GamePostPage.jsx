@@ -2,6 +2,7 @@ import Navbar from "../../components/Navbar";
 import gameposthero from "../../assets/images/gameposthero.png";
 import placeholderWhite from "../../assets/images/placeholderWhite.svg";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer";
 /* =========================================================
    MOCK DATABASE OBJECT (STRUCTURE MATCHES YOUR SCHEMA)
 ========================================================= */
@@ -44,6 +45,8 @@ const MOCK = {
   quick_control_overview: [
     { qco_title: "MOVEMENT", qco_title_desc: "Use W,A,S,D to move." },
     { qco_title: "COMBAT", qco_title_desc: "Left click to fire." },
+    { qco_title: "COMBAT", qco_title_desc: "Left click to fire." },
+    { qco_title: "COMBAT", qco_title_desc: "Left click to fire." },
   ],
 
   system_requirement: {
@@ -76,9 +79,14 @@ const MOCK = {
 
   expert_reviews: [
     { site: "IGN", quote: "Outstanding tactical shooter.", rating: 9, max_rating: 10 },
+    { site: "IGN", quote: "Outstanding tactical shooter.", rating: 9, max_rating: 10 },
+    { site: "IGN", quote: "Outstanding tactical shooter.", rating: 9, max_rating: 10 },
+
   ],
 
   user_reviews: [
+    { username: "Player123", comment: "Highly competitive gameplay.", rating: 8 },
+    { username: "Player123", comment: "Highly competitive gameplay.", rating: 8 },
     { username: "Player123", comment: "Highly competitive gameplay.", rating: 8 },
   ],
 
@@ -113,7 +121,11 @@ export default function GamePostPage() {
       <SystemRequirementSection sys={data.system_requirement} />
       <ModesSection modes={data.modes} />
       <ReviewsSection expert={data.expert_reviews} user={data.user_reviews} />
-      <AwardsSection awards={data.awards_and_achievements} />
+      
+      <CommunitySection />
+      <CriticRatingSection />
+      <JoinCommunitySection />
+      <Footer accent="red"  />
     </div>
   );
 }
@@ -224,7 +236,7 @@ function GameplaySection({ gameplay }) {
       </h2>
 
       {/* Intro Paragraph (Static – matches Figma style) */}
-      <p className="text-[13px] leading-relaxed text-black mb-8 max-w-4xl">
+      <p className="text-[20px] leading-relaxed text-black mb-8 max-w-4xl">
         VALORANT is a tactical 5v5 first-person shooter that emphasizes precision,
         strategy, and teamwork. Every match is divided into rounds where players
         take on the role of attackers or defenders, with success depending on
@@ -236,7 +248,7 @@ function GameplaySection({ gameplay }) {
       <div className="space-y-6 max-w-4xl">
         {gameplay.map((g, i) => (
           <div key={i}>
-            <p className="text-[13px] leading-relaxed text-black">
+            <p className="text-[20px] leading-relaxed text-black">
               <span className="font-bold uppercase">
                 • {g.gameplay_title}
               </span>{" "}
@@ -464,3 +476,203 @@ function AwardsSection({ awards }) {
     
   );
 }
+/* =========================================================
+   FOOTER SECTION
+========================================================= */
+
+/* =========================================================
+   COMMUNITY SECTION
+========================================================= */
+
+function CommunitySection() {
+  return (
+    <section className="max-w-[1440px] mx-auto px-6 lg:px-16 py-24 font-jetmono">
+      
+      {/* Section Title */}
+      <h2 className="text-[42px] font-black uppercase text-red-600 tracking-wide mb-16">
+        Community Hub
+      </h2>
+
+      {/* Main Grid */}
+      <div className="grid lg:grid-cols-3 gap-10">
+
+        {/* ================= LIVE CHAT ================= */}
+        <div className="lg:col-span-2 bg-[#EED2D2] border border-black/30 rounded-2xl p-8 flex flex-col justify-between min-h-[360px]">
+          
+          <div>
+            <h3 className="text-sm font-bold uppercase tracking-widest mb-6">
+              Live Chatroom
+            </h3>
+
+            <p className="text-sm leading-relaxed">
+              <span className="font-bold">@GZONESPHERE:</span>{" "}
+              Free-for-all mode focused purely on combat. Used primarily for
+              warm-ups, aim training, and mechanical improvement.
+            </p>
+          </div>
+
+          {/* Input */}
+          <div className="mt-8 flex gap-4">
+            <input
+              type="text"
+              placeholder="Type message"
+              className="flex-1 bg-white border border-black/30 rounded-md px-4 py-3 text-sm outline-none"
+            />
+
+            <button className="bg-red-600 text-white text-xs uppercase tracking-widest px-6 rounded-md hover:bg-red-700 transition">
+              Send →
+            </button>
+          </div>
+        </div>
+
+        {/* ================= REVIEW BOX ================= */}
+        <div className="bg-[#EED2D2] border border-black/30 rounded-2xl p-8 min-h-[360px] flex flex-col justify-between">
+          
+          <div>
+            <h3 className="text-sm font-bold uppercase tracking-widest mb-6">
+              Share Your Reviews
+            </h3>
+
+            {/* Username */}
+            <p className="text-xs uppercase tracking-widest mb-6">
+              Username: <span className="font-bold">@GZONEOFFICIAL</span>
+            </p>
+
+            {/* Role + Rating */}
+            <div className="flex items-center justify-between mb-8">
+              <select className="bg-white border border-black/30 rounded-md px-3 py-2 text-sm outline-none">
+                <option>Gamer</option>
+                <option>Critic</option>
+                <option>Casual</option>
+              </select>
+
+              <div className="flex items-center gap-3">
+                <span className="text-xs uppercase">Rate</span>
+                <input
+                  type="range"
+                  min="1"
+                  max="10"
+                  defaultValue="8"
+                  className="accent-red-600"
+                />
+                <span className="text-sm font-bold">8/10</span>
+              </div>
+            </div>
+
+            {/* Review Input */}
+            <textarea
+              placeholder="Type message"
+              rows="3"
+              className="w-full bg-white border border-black/30 rounded-md px-4 py-3 text-sm outline-none resize-none"
+            />
+          </div>
+
+          {/* Button */}
+          <button className="mt-6 bg-red-600 text-white text-xs uppercase tracking-widest px-6 py-3 rounded-md hover:bg-red-700 transition">
+            Post Review →
+          </button>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+/* =========================================================
+   CRITIC RATING SECTION
+========================================================= */
+
+function CriticRatingSection() {
+  return (
+    <section className="max-w-[1440px] mx-auto px-6 lg:px-16 py-16 font-jetmono">
+      
+      <div className="bg-red-600 rounded-2xl px-10 py-12 flex flex-col lg:flex-row items-center justify-between gap-10">
+        
+        {/* Left Content */}
+        <div>
+          <h2 className="text-[38px] font-black uppercase text-white tracking-wide mb-4">
+            Critic Rating
+          </h2>
+
+          <p className="text-sm text-white/90">
+            Login as Critic to write the Critic Reviews
+          </p>
+        </div>
+
+        {/* Right Side (Form Area) */}
+        <div className="flex flex-col sm:flex-row items-center gap-6 w-full lg:w-auto">
+          
+          {/* Email Input */}
+          <input
+            type="email"
+            placeholder="E-mail"
+            className="bg-transparent border border-white/70 text-white placeholder-white/70 rounded-md px-6 py-3 text-sm outline-none w-full sm:w-[260px]"
+          />
+
+          {/* Login Button */}
+          <button className="bg-white text-black text-xs uppercase tracking-widest px-8 py-3 rounded-md hover:bg-neutral-200 transition w-full sm:w-auto">
+            Login →
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+  );
+}
+function FooterSection() {
+  return (
+    <section className="mt-20">
+      <Footer accent = "red" />
+    </section>
+  );
+}
+/* =========================================================
+   JOIN COMMUNITY SECTION
+========================================================= */
+
+function JoinCommunitySection() {
+  return (
+    <section className="max-w-[1440px] mx-auto px-6 lg:px-16 py-16 font-jetmono">
+      
+      <div className="bg-red-600 rounded-2xl px-10 py-10 flex items-center justify-between">
+        
+        {/* Left Title */}
+        <h2 className="text-[36px] font-black uppercase text-white tracking-wide">
+          Join Our Community
+        </h2>
+
+        {/* Right Social Icons */}
+        <div className="flex items-center gap-6">
+          
+          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-red-600 text-sm font-bold cursor-pointer hover:scale-105 transition">
+            IG
+          </div>
+
+          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-red-600 text-sm font-bold cursor-pointer hover:scale-105 transition">
+            YT
+          </div>
+
+          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-red-600 text-sm font-bold cursor-pointer hover:scale-105 transition">
+            RD
+          </div>
+
+          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-red-600 text-sm font-bold cursor-pointer hover:scale-105 transition">
+            DC
+          </div>
+
+          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-red-600 text-sm font-bold cursor-pointer hover:scale-105 transition">
+            TW
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+  );
+}
+
+
+
+

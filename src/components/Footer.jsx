@@ -6,7 +6,7 @@ import { FiArrowUpRight } from 'react-icons/fi';
  * @param {string} accent - Accent color ('yellow' | 'green')
  * @param {string} variant - Color variant ('dark' | 'light')
  */
-function Footer({ accent = 'yellow', variant = 'dark' }) {
+function Footer({ accent = 'yellow', variant = 'light' }) {
   // Accent color classes
   const logoColorClass = accent === 'green' ? 'text-green-600' 
     : accent === 'red' ? 'text-red-500' 
